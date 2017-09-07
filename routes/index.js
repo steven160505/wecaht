@@ -8,6 +8,8 @@ router.get('/wechat/hello', function(req, res, next) {
     res.render('index', { title: 'Hello, wechat!' });
 });
 
+const token = 'yN6GA75XaxSFgIlDL7D5';
+
 router.get('/wechat/verify', function(req, res, next) {
 
     const { signature, timestamp, nonce, echostr } = req.query;
