@@ -6594,13 +6594,15 @@
     var localhostPaht = curWwwPath.substring(0, pos);
     var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
     var baseUrl = localhostPaht + projectName;
+    console.log("baseUrl: ", baseUrl);
     $(function() {
         var share_time = 0;
         var url = encodeURIComponent(window.location.href);
+        console.log("url", url);
         $.ajax({
             type: "GET",
             dataType: "jsonp",
-            url: baseUrl + "/index2.php?uid=1&url=" + url + "&callback=?",
+            url: baseUrl + "/signature?uid=1&url=" + url + "&callback=?",
             data: {},
             success: function(result) {
                 if (result.code == 0) {

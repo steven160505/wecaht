@@ -49,9 +49,8 @@ router.get('/wechat/signature', function(req, res, next) {
 
     console.log('req query',req.query);
 
-    // let url = req.query.url?req.query.url: 'http://www.59pw.cn' + req.url;
-    // url = url.split('#')[0];
-    let url = req.query.url? req.query.url : "url";
+    let url = req.query.url? req.query.url: 'http://mp.beibjia.com' + req.url;
+    url = url.split('#')[0];
 
     console.log(url)
     jssdk.getSignPackage(url, function(err, signature) {
