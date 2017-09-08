@@ -6613,6 +6613,7 @@
         });
 
         function callback(data) {
+            console.log("callback data:", data);
             wx.config(data.config);
             wx.ready(function() {
                 wx.hideAllNonBaseMenuItem();
