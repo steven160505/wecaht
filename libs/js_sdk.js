@@ -53,6 +53,7 @@ JSSDK.prototype = {
      * @param  {Function} done [description]
      * @return {[type]}        [description]
      */
+
     getJsApiTicket: function(done) {
         const cacheFile = 'js_apiticket.json';
         const intance = this;
@@ -142,6 +143,7 @@ JSSDK.prototype = {
             done(null, data.accessToken);
         }
     },
+
     /**
      * [createNonceStr description]
      * @return {[type]} [description]

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const crypto = require('crypto');
-const config = request('../config/config');
+const config = require('../config/config');
 const jssdk = require('../libs/jssdk');
 
 /* GET home page. */
