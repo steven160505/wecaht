@@ -1,6 +1,8 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const crypto = require('crypto');
+const config = request('../config/config');
+const jssdk = require('../libs/jssdk');
 
 /* GET home page. */
 router.get('/wechat/hello', function(req, res, next) {
@@ -8,7 +10,12 @@ router.get('/wechat/hello', function(req, res, next) {
     res.render('index', { title: 'Hello, wechat!' });
 });
 
-const token = 'yN6GA75XaxSFgIlDL7D5';
+const token = config.token;
+
+
+/**
+ * Wechat verify
+ */
 
 router.get('/wechat/verify', function(req, res, next) {
 
@@ -33,5 +40,27 @@ router.get('/wechat/verify', function(req, res, next) {
     }
 
 });
+
+router.get('pages/index.html',function(req,res,next){
+
+});
+
+router.get('/wechat/signature', function(req, res, next) {
+
+    console.log('req query',req.query);
+
+    // let url = req.query.url?req.query.url: 'http://www.59pw.cn' + req.url;
+    // url = url.split('#')[0];
+    let url = req.query.url? req.query.url : "url";
+
+    console.log(url)
+    jssdk.getSignPackage(url, function(err, signature) {
+        if (err) {
+            return next(err);
+        }
+        console.log(signature)
+        res.jsonp({ code: 200, data: signature });
+    })
+})
 
 module.exports = router;
